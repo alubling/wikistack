@@ -1,0 +1,22 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.navbar {
+  border-radius: 0;
+}
+
+.List {
+  padding-left: 20px;
+}
+
+.page-header, .formSection {
+  /*padding-left: 50px;*/
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}

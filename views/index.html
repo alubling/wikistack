@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="page-header">
+      <h1>{{title}}</h1>
+    </div>
+
+    <ul>
+      {% for doc in docs %}
+        <li><a href='/{{doc.url_name}}'>{{doc.title}}</a></li>
+      {% endfor %}
+    </ul>
+    <!-- <div class="list-group">
+      <a href="#" class="list-group-item active">Fullstack Home</a>
+      <a href="#" class="list-group-item">About Me</a>
+      <a href="#" class="list-group-item">My Projects</a>
+      <a href="#" class="list-group-item">My City</a>
+      <a href="#" class="list-group-item">Code I've Written</a>
+    </div> -->
+    <div class="List">
+      <ul>
+        <li><a href="#">Fullstack Home</a></li>
+        <li><a href="#">About Me</a></li>
+        <li><a href="#">My Projects</a></li>
+        <li><a href="#">My City</a></li>
+        <li><a href="#">Code I've Written</a></li>
+      </ul>
+    </div>
+{% endblock %}
