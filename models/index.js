@@ -11,7 +11,8 @@ var pageSchema = new mongoose.Schema({
   owner_id: String,
   content:  String,
   date:     { type: Date, default: Date.now },
-  status:   Number
+  status:   Number,
+  tags: [String]
 });
 
 var userSchema = new mongoose.Schema({
@@ -19,12 +20,13 @@ var userSchema = new mongoose.Schema({
   email: String
 });
 
+pageSchema.virtual('full_route').get(function() {
+  return '/wiki/' + this.url_name;
+});
+
 var Page = mongoose.model('Page', pageSchema);
 var User = mongoose.model('User', userSchema);
 
-pageSchema.virtual('full_route').get(function() {
-  return '/wiki/' + url_name;
-});
 
 module.exports = {
   Page: Page,

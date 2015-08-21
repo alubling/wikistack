@@ -1,12 +1,13 @@
 var express = require('express');
+var mongo = require('../models/index.js');
 var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('add');
+  res.render('edit', { docs });
 });
 
-router.post('/submit', function(req, res) {
+router.post('/:url/submit', function(req, res) {
   var models = require('../models/');
 
   // STUDENT ASSIGNMENT:
@@ -18,7 +19,8 @@ router.post('/submit', function(req, res) {
   var tags = req.body.tags.split(", ");
   console.log(tags);
 
-  var page = new models.Page({ 'title': title, 'content': content, 'url_name': url_name, 'tags': tags});
+  mongo.Page.findOneAndUpdate({ 'url_name': req.params.url }, { 'title': title, 'content': content, 'tags': tags} );
+  //var page = new models.Page({ 'title': title, 'content': content, 'url_name': url_name, 'tags': tags});
   page.save();
   res.redirect('/');
 });

@@ -5,11 +5,26 @@
       <h1>{{title}}</h1>
     </div>
 
-    <ul>
-      {% for doc in docs %}
-        <li><a href='/{{doc.url_name}}'>{{doc.title}}</a></li>
-      {% endfor %}
-    </ul>
+
+
+    <div class="List">
+      {% if docs.length > 0 %}
+        <ul>
+          {% for doc in docs %}
+            <li>{{doc|page_link}}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        There are no pages. Why don't you <a href='/add'>add one</a>?
+      {% endif %}
+
+      <!-- <ul>
+        {% for doc in docs %}
+          <li><a href='/{{doc.url_name}}'>{{doc.title}}</a></li>
+        {% endfor %}
+      </ul> -->
+    </div>
+
     <!-- <div class="list-group">
       <a href="#" class="list-group-item active">Fullstack Home</a>
       <a href="#" class="list-group-item">About Me</a>

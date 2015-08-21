@@ -1,19 +1,19 @@
-<!-- add_page.html -->
+<!-- edit.html -->
 {% extends "layout.html" %}
 
 {% block content %}
 <form class="formSection" action="/add/submit" method="post">
   <div class="form-group">
     <label for="pageTitle">PAGE TITLE</label>
-    <input class="form-control" name="title" id="title" placeholder="Title">
+    <input class="form-control" name="title" id="title" placeholder="Title" value="{{doc.title}}">
   </div>
   <div class="form-group">
     <label for="pageContent">PAGE CONTENT</label>
-    <textarea class="form-control" name="content" id="content" placeholder="Content"></textarea>
+    <textarea class="form-control" name="content" id="content" placeholder="Content" value="{{doc.content}}">{{doc.content}}</textarea>
   </div>
   <div class="form-group">
     <label for="tags">TAGS</label>
-    <input class="form-control" name="tags" id="tags" placeholder="Tags">
+    <input class="form-control" name="tags" id="tags" placeholder="Tags" value="{{doc.tagsString}}">
   </div>
   <button type="submit" class="btn btn-default btn-primary">Submit</button>
 </form>
