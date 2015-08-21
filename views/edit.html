@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<form class="formSection" action="/add/submit" method="post">
+<form class="formSection" action="{{doc.url_name}}/edit/submit" method="post">
   <div class="form-group">
     <label for="pageTitle">PAGE TITLE</label>
     <input class="form-control" name="title" id="title" placeholder="Title" value="{{doc.title}}">

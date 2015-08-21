@@ -20,7 +20,8 @@ router.get('/:url/edit' , function(req, res) { // where would you input req.para
   });
 });
 
-router.put('/:url/edit/submit', function(req, res) {
+router.post('/:url/:url/edit/submit', function(req, res) {
+  // throw Error ("We made it here!");
   var models = require('../models/');
 
   // STUDENT ASSIGNMENT:
@@ -32,10 +33,13 @@ router.put('/:url/edit/submit', function(req, res) {
   var tags = req.body.tags.split(", ");
   console.log(tags);
 
-  mongo.Page.findOneAndUpdate({ '_id': currentDoc._id }, { 'title': title, 'content': content, 'tags': tags} );
+  mongo.Page.findOneAndUpdate({ '_id': currentDoc._id }, { 'title': title, 'content': content, 'tags': tags, 'url_name': url_name} )
+    .then(function(item) {
+      // res.render('show', { doc: docDisplay});
+      res.redirect('/wiki/' + url_name);
+    });
   //var page = new models.Page({ 'title': title, 'content': content, 'url_name': url_name, 'tags': tags});
-  page.save();
-  res.redirect('/:url');
+  // page.save();
 });
 
 module.exports = router;
